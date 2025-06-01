@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADAPT 사업관리 핵심 원칙 인포그래픽</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for Inter font and general body styling */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Very light gray background for a clean look */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Ensure it takes full viewport height */
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        /* Custom styling for the main container to center content */
+        .infographic-container {
+            max-width: 1200px; /* Max width for larger screens */
+            width: 100%;
+            background-color: #ffffff;
+            border-radius: 12px; /* Slightly softer rounded corners */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08); /* More subtle shadow */
+            padding: 40px; /* Slightly more padding */
+            overflow: hidden; /* Ensures rounded corners are respected */
+        }
+        /* Responsive grid for principles */
+        .principles-grid {
+            display: grid;
+            gap: 24px; /* Consistent gap between cards */
+            grid-template-columns: repeat(1, minmax(0, 1fr)); /* Single column on small screens */
+        }
+        @media (min-width: 640px) { /* sm breakpoint */
+            .principles-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr)); /* Two columns on medium screens */
+            }
+        }
+        @media (min-width: 1024px) { /* lg breakpoint */
+            .principles-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr)); /* Three columns on large screens */
+            }
+        }
+        /* Specific styling for principle cards */
+        .principle-card {
+            background-color: #ffffff; /* White background for cards */
+            border-radius: 10px; /* Softer rounded corners for cards */
+            padding: 30px; /* Increased padding for cards */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04); /* Subtle shadow for cards */
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Smooth transitions */
+            border: 1px solid #e2e8f0; /* Light gray border */
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center content within the card */
+            text-align: center; /* Center text within the card */
+        }
+        .principle-card:hover {
+            transform: translateY(-4px); /* Slight lift on hover */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08); /* Slightly stronger shadow on hover */
+        }
+        .principle-card h3 {
+            font-size: 1.6rem; /* Adjusted heading size */
+            font-weight: 700; /* Bold font weight */
+            color: #1a202c; /* Darker text for heading */
+            margin-bottom: 10px;
+            display: flex; /* Enable flex for inline icon */
+            align-items: center; /* Vertically align icon and text */
+            justify-content: center; /* Center content horizontally */
+            gap: 10px; /* Space between icon and text */
+        }
+        .principle-card h3 .icon {
+            width: 1.8rem; /* Smaller icon size for inline */
+            height: 1.8rem;
+            margin: 0; /* Remove previous margin */
+            flex-shrink: 0; /* Prevent icon from shrinking */
+        }
+        .principle-card .description {
+            font-size: 0.95rem; /* Slightly smaller description font */
+            color: #4a5568;
+            margin-bottom: 18px;
+            line-height: 1.6; /* Improved line height for readability */
+            text-align: left; /* Align description text left */
+        }
+        .principle-card h4 {
+            font-size: 1.05rem; /* Adjusted h4 size */
+            font-weight: 600; /* Semi-bold */
+            color: #2d3748;
+            margin-bottom: 10px;
+            text-align: left; /* Align h4 text left */
+            width: 100%; /* Take full width for left alignment */
+        }
+        .principle-card ul {
+            list-style: none; /* Remove default list style */
+            padding-left: 0;
+            margin-top: 5px;
+            width: 100%; /* Take full width for left alignment */
+            text-align: left; /* Align list items left */
+        }
+        .principle-card ul li {
+            position: relative;
+            padding-left: 28px; /* Adjust padding for bullet */
+            margin-bottom: 8px; /* Increased margin between list items */
+            color: #525f71;
+            font-size: 0.9rem; /* Slightly smaller list item font */
+            line-height: 1.5;
+        }
+        .principle-card ul li::before {
+            content: '•'; /* Custom bullet point */
+            color: #3b82f6; /* Blue color for bullets, can be overridden */
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1.5em; /* Adjust margin for bullet */
+            position: absolute;
+            left: 0;
+        }
+
+        /* Specific color overrides for icons and bullets */
+        .principle-card.blue .icon, .principle-card.blue ul li::before { color: #3b82f6; }
+        .principle-card.green .icon, .principle-card.green ul li::before { color: #10b981; }
+        .principle-card.purple .icon, .principle-card.purple ul li::before { color: #8b5cf6; }
+        .principle-card.red .icon, .principle-card.red ul li::before { color: #ef4444; }
+        .principle-card.yellow .icon, .principle-card.yellow ul li::before { color: #f59e0b; }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <div class="infographic-container">
+        <div class="text-center mb-16 p-8 bg-blue-600 text-white rounded-lg shadow-md">
+            <h1 class="text-3xl sm:text-4xl font-extrabold mb-3 leading-tight">ADAPT 사업관리 핵심 원칙</h1>
+            <p class="text-lg sm:text-xl font-light opacity-90">
+                <span class="font-bold">A</span>gile, <span class="font-bold">D</span>ata-driven, <span class="font-bold">A</span>daptive, <span class="font-bold">P</span>roactive, <span class="font-bold">T</span>ransparent
+            </p>
+            <p class="text-md sm:text-lg mt-4 italic opacity-80">프로젝트 의사결정과 활동의 나침반</p>
+        </div>
+
+        <div class="principles-grid">
+            <div class="principle-card blue">
+                <h3 class="text-blue-700">
+                    <span class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zap">
+                            <path d="M4 14a1 1 0 0 1-.4-1.2L10.5 2h3l-6.5 10.8a1 1 0 0 0 .4 1.2Z"/>
+                            <path d="M20 10a1 1 0 0 1 .4 1.2L13.5 22h-3l6.5-10.8a1 1 0 0 0-.4-1.2Z"/>
+                        </svg>
+                    </span>
+                    Agile
+                </h3>
+                <p class="description">
+                    시장과 고객 요구 변화에 신속 반응, 짧은 주기 반복, 지속적 결과물 제공, 피드백 즉시 반영.
+                </p>
+                <h4 class="font-semibold text-gray-700 mb-2">적용 방안:</h4>
+                <ul>
+                    <li>짧은 스프린트 주기</li>
+                    <li>일일 스크럼</li>
+                    <li>주기적 검토 및 회고</li>
+                    <li>고객과의 지속적 협업</li>
+                </ul>
+            </div>
+
+            <div class="principle-card green">
+                <h3 class="text-green-700">
+                    <span class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bar-chart-2">
+                            <line x1="18" x2="18" y1="20" y2="10"/>
+                            <line x1="12" x2="12" y1="20" y2="4"/>
+                            <line x1="6" x2="6" y1="20" y2="14"/>
+                        </svg>
+                    </span>
+                    Data-driven
+                </h3>
+                <p class="description">
+                    직관 아닌 데이터 기반 객관적 의사결정, 실시간 데이터 수집/분석, 현재 파악 및 미래 예측.
+                </p>
+                <h4 class="font-semibold text-gray-700 mb-2">적용 방안:</h4>
+                <ul>
+                    <li>통합 대시보드 구축</li>
+                    <li>KPI(핵심 성과 지표) 설정 및 모니터링</li>
+                    <li>AI/ML 기반 예측 모델 활용</li>
+                </ul>
+            </div>
+
+            <div class="principle-card purple">
+                <h3 class="text-purple-700">
+                    <span class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rotate-ccw">
+                            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.76 2.75L3 8"/>
+                            <path d="M3 3v5h5"/>
+                        </svg>
+                    </span>
+                    Adaptive
+                </h3>
+                <p class="description">
+                    변화를 기회로 인식, 유연한 전략/계획 조정, 문제 발생 시 최적 해결책으로 전환.
+                </p>
+                <h4 class="font-semibold text-gray-700 mb-2">적용 방안:</h4>
+                <ul>
+                    <li>주기적 계획 재조정</li>
+                    <li>변경 관리 프로세스 유연화</li>
+                    <li>비상 계획 수립</li>
+                </ul>
+            </div>
+
+            <div class="principle-card red">
+                <h3 class="text-red-700">
+                    <span class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye">
+                            <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
+                            <circle cx="12" cy="12" r="3"/>
+                        </svg>
+                    </span>
+                    Proactive
+                </h3>
+                <p class="description">
+                    잠재적 위험/이슈 사전 예측, 선제적 조치로 문제 발생 최소화, 위험 징후 조기 감지.
+                </p>
+                <h4 class="font-semibold text-gray-700 mb-2">적용 방안:</h4>
+                <ul>
+                    <li>예측 기반 리스크 관리</li>
+                    <li>AI 기반 이상 징후 감지</li>
+                    <li>자동화된 알림 시스템</li>
+                </ul>
+            </div>
+
+            <div class="principle-card yellow">
+                <h3 class="text-yellow-700">
+                    <span class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text">
+                            <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/>
+                            <path d="M14 2v4a2 2 0 0 0 2 2h4"/>
+                            <path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/>
+                        </svg>
+                    </span>
+                    Transparent
+                </h3>
+                <p class="description">
+                    모든 정보(진행, 이슈, 리스크, 의사결정) 투명 공개/공유, 신뢰 구축, 신속 의사결정.
+                </p>
+                <h4 class="font-semibold text-gray-700 mb-2">적용 방안:</h4>
+                <ul>
+                    <li>실시간 통합 대시보드</li>
+                    <li>정기 보고서 공유</li>
+                    <li>개방형 커뮤니케이션 채널 운영</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

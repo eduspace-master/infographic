@@ -1,0 +1,99 @@
+<style>
+    body {
+      font-family: 'Malgun Gothic', sans-serif;
+      color: #333;
+      background-color: #ffffff; /* 배경 및 표 셀 바탕 */
+      margin: 20px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fefefe; /* 흰색 변형 */
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    }
+    h2 {
+      color: #5071e2; /* 파란색 헤더 배경 */
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .process-step {
+      background-color: #ffffff; /* 배경 및 표 셀 바탕 */
+      border: 1px solid #ededed; /* 회색 셀 배경 (변형) */
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 0px; /* 화살표와의 간격을 위해 0으로 설정 */
+      display: flex;
+      align-items: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+    }
+    .process-step:nth-child(even) {
+      background-color: #f7f7f7; /* 회색 셀 배경 (변형) */
+    }
+    .step-icon {
+      font-size: 2.5em;
+      color: #5071e2; /* 파란색 헤더 배경 */
+      margin-right: 15px;
+      flex-shrink: 0;
+      width: 60px;
+      text-align: center;
+    }
+    .step-content h3 {
+      color: #5071e2; /* 파란색 헤더 배경 */
+      margin-top: 0;
+      font-size: 1.3em;
+      margin-bottom: 5px;
+    }
+    .step-content p {
+      font-size: 0.95em;
+      line-height: 1.5;
+      margin-bottom: 0;
+    }
+    .arrow-down {
+      text-align: center;
+      font-size: 2.5em;
+      color: #5071e2; /* 파란색 헤더 배경 */
+      margin: 5px 0; /* 화살표 위아래 간격 조정 */
+      line-height: 1; /* 줄 높이 조정 */
+    }
+  </style>
+  
+  <div class="container">
+    <h2>프로젝트 생애주기별 관리 프로세스</h2>
+  
+    <div class="process-step">
+      <div class="step-icon">💡</div>
+      <div class="step-content">
+        <h3>1단계: 착수 및 계획 (Vision & Backlog Creation)</h3>
+        <p><strong>비전 수립</strong>, <strong>요구사항 정의</strong>, <strong>팀 구성</strong>, <strong>대시보드 초기 설정</strong>.</p>
+      </div>
+    </div>
+    <div class="arrow-down">↓</div>
+  
+    <div class="process-step">
+      <div class="step-icon">⚙️</div>
+      <div class="step-content">
+        <h3>2단계: 스프린트 반복 (Iterative Development & Delivery)</h3>
+        <p><strong>스프린트 계획</strong>, <strong>일일 스크럼</strong>, <strong>개발 및 테스트</strong>, <strong>진척 모니터링</strong>.</p>
+      </div>
+    </div>
+    <div class="arrow-down">↓</div>
+  
+    <div class="process-step">
+      <div class="step-icon">📊</div>
+      <div class="step-content">
+        <h3>3단계: 검토 및 회고 (Review & Retrospective)</h3>
+        <p><strong>스프린트 검토</strong>, <strong>스프린트 회고</strong>, <strong>백로그 재조정</strong>.</p>
+      </div>
+    </div>
+    <div class="arrow-down">↓</div>
+  
+    <div class="process-step">
+      <div class="step-icon">✅</div>
+      <div class="step-content">
+        <h3>4단계: 종료 및 이행 (Project Closure & Knowledge Transfer)</h3>
+        <p><strong>최종 검토 및 승인</strong>, <strong>지식 이전 및 문서화</strong>, <strong>성과 평가 및 회고</strong>.</p>
+      </div>
+    </div>
+  </div>

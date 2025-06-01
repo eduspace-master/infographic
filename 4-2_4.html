@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>단계별 프로세스 인포그래픽</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+  body {
+    font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', Dotum, sans-serif; /* 한글 가독성을 위한 폰트 제안 */
+    background-color: #ffffff; /* 배경 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 20px; /* 상하 패딩 추가 */
+    overflow-x: auto; /* 내용이 길 경우 가로 스크롤 */
+    color: #333333; /* 기본 텍스트 색상 */
+  }
+  .infographic-container {
+    display: flex;
+    flex-direction: row; /* 가로 정렬 */
+    align-items: stretch; /* 카드 높이를 동일하게 확장 (내용에 따라) */
+    gap: 15px; /* 카드와 화살표 사이 간격 */
+    padding: 20px;
+    background-color: #ffffff; /* 컨테이너 배경 */
+  }
+  .step-card {
+    background-color: #fefefe; /* 흰색 변형 (카드 배경) */
+    border: 1px solid #ededed; /* 회색 셀 배경 (변형) - 테두리 */
+    border-radius: 10px; /* 부드러운 모서리 */
+    padding: 25px 20px;
+    width: 190px; /* 카드 너비 */
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.07); /* 은은한 그림자 효과 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* 내용을 위에서부터 정렬 */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+  .step-card:hover {
+    transform: translateY(-5px); /* 마우스 오버 시 살짝 위로 이동 */
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  }
+  .step-icon-container {
+    background-color: #5071e2; /* 파란색 헤더 배경 */
+    color: #ffffff; /* 아이콘 색상 (흰색) */
+    border-radius: 50%;
+    width: 65px; /* 아이콘 컨테이너 크기 */
+    height: 65px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px; /* 아이콘과 제목 사이 간격 */
+    font-size: 30px; /* 아이콘 크기 */
+  }
+  .step-title {
+    font-size: 16px;
+    font-weight: 600; /* Bold 보다 약간 부드럽게 */
+    color: #5071e2; /* 파란색 헤더 (제목 색상) */
+    margin-bottom: 8px;
+    min-height: 45px; /* 제목 영역 높이 확보 (2줄 기준) */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.4;
+  }
+  .step-subtitle {
+    font-size: 12px;
+    color: #777777; /* 부제목 색상 */
+    margin-bottom: 15px;
+  }
+  .step-keywords {
+      font-size: 13px;
+      color: #444444; /* 키워드 색상 */
+      line-height: 1.6;
+      background-color: #f7f7f7; /* 회색 셀 배경 (변형) - 키워드 배경 */
+      padding: 8px 10px;
+      border-radius: 5px;
+      width: 100%; /* 너비 채움 */
+      box-sizing: border-box; /* 패딩 포함하여 너비 계산 */
+  }
+  .keywords-title {
+      font-size: 11px;
+      color: #5071e2;
+      font-weight: bold;
+      margin-bottom: 5px;
+      display: block;
+  }
+
+  .arrow-container {
+    display: flex;
+    align-items: center; /* 수직 중앙 정렬 */
+    justify-content: center;
+    align-self: center; /* 부모 컨테이너 내에서 수직 중앙 정렬 */
+    font-size: 32px; /* 화살표 크기 */
+    color: #5071e2; /* 파란색 헤더 (화살표 색상) */
+    padding: 0 15px; /* 화살표 좌우 여백 */
+  }
+
+  /* Font Awesome 아이콘 클래스 (참고용) */
+  /* 1: fas fa-bell (알림), fas fa-brain (AI 예측) */
+  /* 2: fas fa-bullhorn (정보 전파), fas fa-chart-pie (보고서) */
+  /* 3: fas fa-magnifying-glass-chart (데이터 분석), fas fa-search (검색) */
+  /* 4: fas fa-sliders-h (조정/설계), fas fa-flask (시뮬레이션) */
+  /* 5: fas fa-tasks (실행), fas fa-clipboard-check (완료/모니터링) */
+
+</style>
+</head>
+<body>
+
+<div class="infographic-container">
+
+  <div class="step-card">
+    <div class="step-icon-container">
+      <i class="fas fa-bell"></i>
+    </div>
+    <div class="step-title">문제 상황 인지<br>& 감지</div>
+    <div class="step-subtitle">(Proactive Sensing)</div>
+    <div class="step-keywords">
+      자동 알림<br>
+      예측 분석
+    </div>
+  </div>
+
+  <div class="arrow-container">
+    <i class="fas fa-chevron-right"></i>
+  </div>
+
+  <div class="step-card">
+    <div class="step-icon-container">
+      <i class="fas fa-bullhorn"></i>
+    </div>
+    <div class="step-title">신속한 정보 공유<br>& 보고</div>
+    <div class="step-subtitle">(Rapid Communication)</div>
+    <div class="step-keywords">
+      실시간 현황 공유<br>
+      자동 보고서 생성
+    </div>
+  </div>
+
+  <div class="arrow-container">
+    <i class="fas fa-chevron-right"></i>
+  </div>
+
+  <div class="step-card">
+    <div class="step-icon-container">
+      <i class="fas fa-magnifying-glass-chart"></i>
+    </div>
+    <div class="step-title">데이터 기반<br>원인 분석</div>
+    <div class="step-subtitle">(Data-driven RCA)</div>
+    <div class="step-keywords">
+      원인 분석 도구<br>
+      유사 사례 검색
+    </div>
+  </div>
+
+  <div class="arrow-container">
+    <i class="fas fa-chevron-right"></i>
+  </div>
+
+  <div class="step-card">
+    <div class="step-icon-container">
+      <i class="fas fa-sliders-h"></i>
+    </div>
+    <div class="step-title">대응 방안 수립<br>& 시뮬레이션</div>
+    <div class="step-subtitle">(Solution Design & Simulation)</div>
+    <div class="step-keywords">
+      대응 방안 제안<br>
+      효과 시뮬레이션
+    </div>
+  </div>
+
+  <div class="arrow-container">
+    <i class="fas fa-chevron-right"></i>
+  </div>
+
+  <div class="step-card">
+    <div class="step-icon-container">
+      <i class="fas fa-tasks"></i>
+    </div>
+    <div class="step-title">실행 및<br>지속 모니터링</div>
+    <div class="step-subtitle">(Execution & Monitoring)</div>
+    <div class="step-keywords">
+      즉각적 조치 실행<br>
+      실시간 효과 추적
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
