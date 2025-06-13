@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-TF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>목표 시스템 기능 구성도</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #ffffff;
+            color: #333;
+        }
+
+        .infographic-title {
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #5071e2;
+        }
+
+        .features-grid {
+            display: flex;
+            flex-wrap: wrap; /* 모바일 화면 등에서 줄바꿈 허용 */
+            gap: 20px; /* 컬럼 간 간격 */
+            justify-content: center; /* 컬럼 중앙 정렬 */
+        }
+
+        .feature-category-column {
+            background-color: #fefefe; /* 흰색 변형 */
+            flex: 1 1 280px; /* 기본 너비 280px, 가변적으로 늘어남, 화면 작아지면 줄바꿈 */
+            min-width: 280px; /* 최소 너비 */
+            max-width: 320px; /* 최대 너비 (선택적) */
+            display: flex;
+            flex-direction: column;
+            /* border: 1px solid #e0e0e0; */ /* 요청에 따라 외부 테두리 제거 */
+            /* box-shadow: 0 2px 5px rgba(0,0,0,0.1); */ /* 요청에 따라 외부 그림자 제거 */
+        }
+
+        .category-header {
+            background-color: #5071e2; /* 파란색 헤더 배경 */
+            color: #ffffff;
+            padding: 15px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px; /* 아이콘과 텍스트 간 간격 */
+        }
+
+        .category-header i {
+            font-size: 20px;
+        }
+
+        .features-list {
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px; /* 기능 아이템 간 간격 */
+            flex-grow: 1; /* 컬럼 높이 동일하게 채우도록 */
+        }
+
+        .feature-item {
+            background-color: #f0f0f0; /* 회색 셀 배경 (변형) */
+            padding: 15px;
+            /* border: 1px solid #dddddd; */ /* 내부 아이템 테두리 (선택적) */
+            display: flex;
+            flex-direction: column; /* 내부 요소 세로 정렬 */
+            align-items: flex-start; /* 내부 요소 위쪽 정렬 */
+            flex-grow: 1; /* 동일 계층 박스 높이 맞추기 위한 시도 */
+            min-height: 100px; /* 최소 높이 보장 */
+        }
+
+        .feature-item:nth-child(odd) {
+             background-color: #f7f7f7; /* 회색 셀 배경 (변형) */
+        }
+
+
+        .feature-item-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .feature-item-header i {
+            font-size: 18px;
+            color: #5071e2; /* 아이콘 색상 */
+            width: 25px; /* 아이콘 너비 고정 */
+            text-align: center;
+        }
+
+        .feature-item h4 {
+            font-size: 16px;
+            color: #333;
+            margin: 0;
+            font-weight: bold;
+        }
+
+        .feature-item p {
+            font-size: 13px;
+            line-height: 1.6;
+            color: #555;
+            margin: 0;
+            padding-left: 33px; /* 아이콘 너비만큼 들여쓰기 */
+        }
+
+        /* 같은 hierachy 의 박스들은 제일 텍스트가 많은 박스를 기준으로 너비와 높이를 일정하게 맞출것
+           - 너비는 flex: 1로 컬럼 너비에 맞춰짐.
+           - 높이는 JS 없이 순수 CSS로 모든 아이템의 높이를 동적으로 가장 긴 아이템에 맞추는 것은
+             각 컬럼 내 아이템들에 대해선 어렵습니다.
+             대신 flex-grow: 1과 min-height로 최소 높이를 보장하고,
+             컬럼 자체의 높이는 features-grid의 align-items: stretch (기본값)에 의해
+             가장 긴 컬럼에 맞춰지도록 유도합니다.
+             만약 컬럼들의 높이를 동일하게 하려면, features-grid에 display: flex; align-items: stretch; 를 사용합니다.
+             현재는 flex-wrap: wrap이므로, 각 줄의 컬럼 높이가 달라질 수 있습니다.
+             모든 컬럼의 높이를 동일하게 하려면, features-grid를 display: grid로 바꾸고
+             grid-auto-rows: 1fr; 등으로 설정하는 것이 좋습니다.
+             여기서는 각 feature-item이 독립적인 높이를 가지되, 컬럼 전체가 시각적으로 균형을 이루도록 합니다.
+        */
+
+        @media (max-width: 768px) { /* 태블릿 및 모바일 대응 */
+            .features-grid {
+                flex-direction: column; /* 작은 화면에서는 컬럼을 세로로 쌓음 */
+                align-items: stretch; /* 컬럼 너비 전체 사용 */
+            }
+            .feature-category-column {
+                max-width: none; /* 최대 너비 제한 해제 */
+                margin-bottom: 20px; /* 컬럼 간 세로 간격 */
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="infographic-title">목표 시스템 기능 구성도</div>
+
+    <div class="features-grid">
+        <div class="feature-category-column">
+            <div class="category-header">
+                <i class="fa-solid fa-users-gear"></i>
+                <span>사용자 대면 주요 기능</span>
+            </div>
+            <div class="features-list">
+                <div class="feature-item">
+                    <div class="feature-item-header">
+                        <i class="fa-solid fa-pencil-alt"></i>
+                        <h4>손글씨 문제 풀이</h4>
+                    </div>
+                    <p>Canvas 기반 손글씨 입력 및 이미지 업로드, Mathpix API 연동 고정밀 수식 인식(선형대수 특화), 실시간 편집/정답판정, YOLO 기반 수식 영역 탐지, AI 사고력 유도형 피드백 제공.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-header">
+                        <i class="fa-brands fa-python"></i>
+                        <h4>파이썬 실습 환경</h4>
+                    </div>
+                    <p>선형대수 문제 연동 코드 자동 생성(NumPy/SciPy), 웹 기반 코드 작성/실행(React/Docker), 정적/동적 코드 분석 및 LLM 기반 오류 수정 피드백.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-header">
+                        <i class="fa-solid fa-comments"></i>
+                        <h4>챗봇 기반 학습 지원</h4>
+                    </div>
+                    <p>OpenAI GPT & LangChain 기반 대화형 지원(선형대수/파이썬), 소크라테스식 단계적 힌트, CoT/Few-Shot Learning, RAG Agent(수업자료 기반 답변).</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-header">
+                        <i class="fa-solid fa-circle-question"></i>
+                        <h4>유저 가이드 (RAG 챗봇)</h4>
+                    </div>
+                    <p>시스템 기능 관련 자연어 질문 응답, 사용자 매뉴얼/학습문서 벡터 검색 기반 답변 생성, 운영 유연성 확보.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="feature-category-column">
+            <div class="category-header">
+                <i class="fa-solid fa-user-graduate"></i>
+                <span>학습자 지원 및 관리</span>
+            </div>
+            <div class="features-list">
+                <div class="feature-item">
+                    <div class="feature-item-header">
+                        <i class="fa-solid fa-chart-line"></i>
+                        <h4>대시보드 학습 통계</h4>
+                    </div>
+                    <p>개인 맞춤형 학습 현황 시각화(풀이 수, 정답률), 게이미피케이션 요소(랭킹, 경험치), Chart.js 기반 분석으로 자기주도 학습 지원.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-header">
+                        <i class="fa-solid fa-book"></i>
+                        <h4>교과과정 지원 LMS</h4>
+                    </div>
+                    <p>SmartLead LMS 연동, 주차별 학습 내용/목표 제공, 단원별 연습문제(상세정보 포함), 학사 시스템 연동(수강정보, 일정).</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-header">
+                        <i class="fa-solid fa-id-card"></i>
+                        <h4>사용자 ID 관리</h4>
+                    </div>
+                    <p>한림대 통합정보시스템 SSO 연동, 로그인/아웃 로그 관리, 사용자 정보 관리(열람/수정/삭제), OAuth 2.0 기반 보안 인증.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-header">
+                        <i class="fa-solid fa-bullhorn"></i>
+                        <h4>사용자 피드백 수집</h4>
+                    </div>
+                    <p>웹/앱 내 '피드백 보내기' 기능, 입력 내용 관리자 이메일 자동 전송, 서비스 품질 향상 및 사용자 만족도 개선에 활용.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="feature-category-column">
+            <div class="category-header">
+                <i class="fa-solid fa-database"></i>
+                <span>데이터 관리 및 활용</span>
+            </div>
+            <div class="features-list">
+                <div class="feature-item">
+                    <div class="feature-item-header">
+                        <i class="fa-solid fa-file-csv"></i>
+                        <h4>사용자 데이터셋 구축</h4>
+                    </div>
+                    <p>Caliper Analytics 표준 기반 데이터셋, 주요 상호작용(질문, 프롬프트, LLM응답) 단계별 저장, 메타데이터 포함(JSON-LD).</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-header">
+                        <i class="fa-solid fa-sitemap"></i>
+                        <h4>DB 설계 요구사항</h4>
+                    </div>
+                    <p>통합 기반 논리적 구조(중복 최소화, 일관성), 유연성/확장성 고려, 데이터 정합성/무결성 확보, 성능 최적화 설계.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-header">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <h4>DB 모니터링 및 안정화</h4>
+                    </div>
+                    <p>이관 데이터 검증/품질관리, 실시간 모니터링 및 자동 통보, 오류 대응(보정/재이관), 정기 백업 및 접근 제어.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-header">
+                        <i class="fa-solid fa-check-double"></i>
+                        <h4>데이터 품질 및 표준 관리</h4>
+                    </div>
+                    <p>품질관리 체계 수립(목표/정책), 데이터 표준 정의(명명규칙/형식), 구축/운영 단계별 품질 확보, 구조/값 검증.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="feature-category-column">
+            <div class="category-header">
+                <i class="fa-solid fa-cogs"></i>
+                <span>시스템 기반 및 보안</span>
+            </div>
+            <div class="features-list">
+                <div class="feature-item">
+                    <div class="feature-item-header">
+                        <i class="fa-solid fa-traffic-light"></i>
+                        <h4>가드레일 기능</h4>
+                    </div>
+                    <p>LLM 오용 방지(오류응답, 편향/유해 콘텐츠 차단), 입력/후처리 가드레일, 외부 가드레일 연동(Meta Llama Guard 등).</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-header">
+                        <i class="fa-solid fa-cubes"></i>
+                        <h4>시스템 아키텍처 및 개발</h4>
+                    </div>
+                    <p>공개SW 우선 활용/관리, 다국어 지원(i18n), 클라우드 환경 구성, 컴포넌트 기반 설계, 표준 개발(React/NestJS/Docker).</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-header">
+                        <i class="fa-solid fa-lock"></i>
+                        <h4>소프트웨어 개발 보안</h4>
+                    </div>
+                    <p>시큐어 코딩(XSS/SQLi 방지), 인증/권한 제어(OAuth2/SSO/RBAC), 정적분석/보안코딩 규칙, 민감정보보호/로그관리.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item-header">
+                        <i class="fa-solid fa-object-group"></i>
+                        <h4>시스템 확장성 및 UI</h4>
+                    </div>
+                    <p>수평확장(Scale-out) 아키텍처, Auto Scaling, 무중단 배포, 응답속도 2초 이내 목표, 동시접속 1천명+ 수용, 웹 기반 반응형 UI.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 수학 튜터 제안 인포그래픽 (개선)</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap');
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .infographic-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: center; /* 전체 컨테이너 내용 중앙 정렬 */
+        }
+
+        .section-header {
+            background-color: #5071e2;
+            color: #ffffff;
+            padding: 15px 30px;
+            font-size: 1.8em;
+            font-weight: 700;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 80%; /* 중앙 헤더 박스 너비 */
+            max-width: 800px;
+        }
+
+        /* Purpose Section */
+        .purpose-section {
+            display: flex;
+            flex-direction: column; /* 목적 박스 세로 정렬 */
+            align-items: center;
+            gap: 25px;
+            width: 100%;
+        }
+
+        .purpose-box {
+            background-color: #fefefe;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            width: 70%; /* 목적 박스 너비 조절 */
+            max-width: 600px;
+            min-height: 150px; /* 목적 박스 최소 높이 */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #ededed;
+        }
+
+        .purpose-box h2 {
+            color: #5071e2;
+            font-size: 1.6em;
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .purpose-box p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #444;
+            margin-bottom: 0;
+        }
+
+        /* Flow and Components Section */
+        .flow-components-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px; /* 섹션 간 간격 */
+            width: 100%;
+        }
+
+        .flow-step-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* 위쪽 정렬 */
+            gap: 30px;
+            flex-wrap: wrap; /* 반응형을 위해 줄바꿈 허용 */
+        }
+
+        .flow-step {
+            background-color: #fefefe;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+            flex: 1;
+            min-width: 300px;
+            max-width: 380px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* 텍스트 상단 정렬 */
+            position: relative;
+            box-sizing: border-box;
+            border: 1px solid #ededed;
+            min-height: 250px; /* 동일한 높이 유지 */
+            max-height: 250px; /* 동일한 높이 유지 */
+        }
+        
+        .flow-step h3 {
+            color: #5071e2;
+            font-size: 1.4em;
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-align: center; /* 제목 중앙 정렬 */
+            width: 100%;
+        }
+
+        .flow-step .icon {
+            font-size: 3em;
+            color: #5071e2;
+            margin-bottom: 20px;
+            align-self: center; /* 아이콘 중앙 정렬 */
+        }
+
+        .flow-step p, .flow-step ul {
+            font-size: 1em;
+            line-height: 1.6;
+            color: #444;
+            margin-bottom: 0;
+            width: 100%;
+        }
+
+        .flow-step ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: left;
+        }
+
+        .flow-step li {
+            margin-bottom: 8px;
+            background-color: #f0f0f0; /* 회색 셀 배경 (변형) */
+            padding: 8px 12px;
+            border-radius: 6px;
+            display: flex;
+            align-items: flex-start;
+            gap: 5px;
+        }
+        .flow-step li i {
+            color: #5071e2;
+            font-size: 0.9em;
+            margin-top: 4px;
+        }
+
+        .arrow-icon {
+            font-size: 3em;
+            color: #5071e2;
+            align-self: center; /* 화살표 중앙 정렬 */
+            margin: 0 10px; /* 화살표 좌우 간격 */
+        }
+
+        /* Keyword Section */
+        .keyword-section {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .keyword-box {
+            background-color: #eeeeee; /* 회색 셀 배경 */
+            padding: 25px 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            width: 80%;
+            max-width: 700px;
+            border: 1px solid #ededed;
+        }
+
+        .keyword-box h3 {
+            color: #5071e2;
+            font-size: 1.4em;
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .keyword-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .keyword-list li {
+            background-color: #5071e2;
+            color: #ffffff;
+            padding: 10px 18px;
+            border-radius: 25px;
+            margin: 7px;
+            font-size: 1em;
+            font-weight: 600;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .flow-step-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .flow-step {
+                width: 90%;
+                max-width: 450px;
+            }
+            .arrow-icon {
+                transform: rotate(90deg); /* 모바일에서 화살표 세로로 */
+                margin: 20px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="infographic-container">
+        <div class="section-header">
+            AI 수학 튜터: 대학 교육 혁신을 위한 핵심 도구
+        </div>
+
+        <div class="purpose-section">
+            <div class="purpose-box">
+                <h2><i class="fas fa-bullseye" style="margin-right: 15px;"></i>사업 목적</h2>
+                <p>생성형 AI를 활용하여 **대학 수학 교육의 질을 향상**하고, 학생들의 **문제 해결력 및 자율 학습 능력을 증진**시켜 AI 수학 튜터를 대학 교육의 **필수적 도구로 자리매김**합니다.</p>
+            </div>
+        </div>
+
+        <div class="flow-components-section">
+            <div class="section-header" style="width: 100%;">
+                단계별 추진 흐름 및 핵심 구성 요소
+            </div>
+
+            <div class="flow-step-container">
+                <div class="flow-step">
+                    <div class="icon"><i class="fas fa-microscope"></i></div>
+                    <h3>1차 적용: 선형대수학 + Python 실습</h3>
+                    <p>손글씨 수식 풀이와 Python 구현을 연결하여, **컴퓨팅 사고 확장** 및 **논리적 재해석 학습** 경험을 제공합니다.</p>
+                </div>
+                <div class="arrow-icon"><i class="fas fa-arrow-right"></i></div>
+                <div class="flow-step">
+                    <div class="icon"><i class="fas fa-robot"></i></div>
+                    <h3>AI 튜터 핵심 기능</h3>
+                    <ul>
+                        <li><i class="fas fa-caret-right"></i> **오류 진단 & 힌트 제공**: 손글씨 풀이 오류 인식 및 단계별 힌트 제공</li>
+                        <li><i class="fas fa-caret-right"></i> **24시간 챗봇 질의응답**: 자연어 기반 개념 설명 및 반복 학습 지원</li>
+                    </ul>
+                </div>
+                <div class="arrow-icon"><i class="fas fa-arrow-right"></i></div>
+                <div class="flow-step">
+                    <div class="icon"><i class="fas fa-rocket"></i></div>
+                    <h3>확장 계획</h3>
+                    <ul>
+                        <li><i class="fas fa-caret-right"></i> <strong>2025년 2학기 선형대수 우선 적용</strong> 및 교육 효과 정량 분석</li>
+                        <li><i class="fas fa-caret-right"></i> 검증 후 **다양한 전공 과목으로 확대** 및 교육 현장 정착 추진</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="keyword-section">
+            <div class="keyword-box">
+                <h3>주요 기술 키워드</h3>
+                <ul class="keyword-list">
+                    <li>OCR</li>
+                    <li>챗봇</li>
+                    <li>튜터</li>
+                    <li>수식 문제풀이</li>
+                    <li>파이썬 실습</li>
+                    <li>로그인</li>
+                    <li>대시보드</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
